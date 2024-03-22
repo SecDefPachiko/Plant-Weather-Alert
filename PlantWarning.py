@@ -17,7 +17,7 @@ def notify_user(weather_data):
     weather_condition = weather_data['list'][0]['weather'][0]['main']
     if temperature < 32:
         print("Warning: It's very cold outside. Bring sensitive plants indoors.")
-    elif ['Rain', 'Thunderstorm', 'Snow'] in weather_condition:
+    elif any(x in weather_condition.lower() for x in ['rain', 'thunderstorm', 'snow']):
         print("Warning: Inclement weather expected. Bring outdoor plants under porch.")
     else:
         print("Weather conditions are favorable for outdoor plants.")
