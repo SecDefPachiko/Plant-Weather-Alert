@@ -28,15 +28,15 @@ def notify_user():
     cur.execute('''SELECT datetime FROM Weather WHERE Condition IN ({seq})'''.format(seq=','.join(['?']*len(inc_condition))), inc_condition)
     inc_datetime = cur.fetchone()
 
-    if len(freeze_datetime) > 0:
+    if freeze_datetime is not None:
         for line in freeze_datetime:
             line = datetime.strptime(line, '%Y-%m-%d %H:%M:%S')
-            print('Warning: There is a chance of freezing weather on', line.strftime('%a %b %d at %I%p'))
+            print('Warning: There is a chance of freezing weather on', line.strftime('%a %b %d at %I %p.'))
 
-    elif len(inc_datetime) > 0:
+    elif inc_datetime is not None:
         for line in inc_datetime:
             line = datetime.strptime(line, '%Y-%m-%d %H:%M:%S')
-            print('Warning: There is a chance of inclement weather on', line.strftime('%a %b %d at %I%p'))
+            print('Warning: There is a chance of inclement weather on', line.strftime('%a %b %d at %I %p.'))
 
     else:
         print("Weather conditions are favorable for outdoor plants.")
