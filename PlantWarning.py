@@ -66,7 +66,7 @@ def clearData():
 
 
 def main():
-    api_key = 'fb09dc1c4ca9f9e1b67eba7a09a53d66'
+    api_key = 'INSERT WEATHER API KEY HERE'
     clearData()
     zip_code = input("Enter the zip code: ")
     country_code = input("Enter the country code: ")
